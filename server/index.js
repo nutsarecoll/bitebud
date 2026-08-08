@@ -3,9 +3,18 @@ import {
   ZONES,
   createSensorState,
   ingestReading,
+  resetSessionState,
   summarizeSession,
   updateCalibration
 } from "./sensorEngine.js";
+import {
+  appendReading,
+  clearReadings,
+  ensureDataDir,
+  loadCalibration,
+  loadReadings,
+  saveCalibration
+} from "./storage.js";
 
 const app = express();
 const port = Number(process.env.BITEBUD_SERVER_PORT || 8787);
@@ -40,8 +49,15 @@ app.get("/api/readings", (_req, res) => {
   });
 });
 
-app.post("/api/readings", (req, res) => {
+app.get("/api/readings/history", async (req, res) => {
+  const limit = Math.min(Math.max(Number(req.query.limit) || 3600, 1), 100000);
+  const readings = await loadReadings({ limit });
+  res.json({ readings, summary: summarizeSession(state) });
+});
+
+app.post("/api/readings", async (req, res) => {
   const reading = ingestReading(state, req.body);
+  await appendReading(reading);
   broadcast({ type: "reading", reading, summary: summarizeSession(state) });
   res.status(201).json({ reading, summary: summarizeSession(state) });
 });
@@ -57,8 +73,9 @@ app.get("/api/readings/stream", (req, res) => {
   req.on("close", () => clients.delete(res));
 });
 
-app.post("/api/calibration", (req, res) => {
+app.post("/api/calibration", async (req, res) => {
   const calibration = updateCalibration(state, req.body || {});
+  await saveCalibration(calibration);
   const summary = summarizeSession(state);
   broadcast({ type: "calibration", calibration, summary });
   res.json({ calibration, summary });
@@ -78,24 +95,11 @@ app.post("/api/mock/stop", (_req, res) => {
   res.json({ mockRunning: false });
 });
 
-app.post("/api/session/reset", (_req, res) => {
-  state.readings.length = 0;
-  state.events.length = 0;
-  for (const sensor of Object.values(state.sensors)) {
-    sensor.latest = null;
-    sensor.eventState = {
-      pressed: false,
-      pendingStartAt: null,
-      belowSince: null,
-      currentEvent: null
-    };
-  }
+app.post("/api/session/reset", async (_req, res) => {
+  resetSessionState(state);
+  await clearReadings();
   broadcast({ type: "reset", summary: summarizeSession(state) });
   res.json({ ok: true, summary: summarizeSession(state) });
-});
-
-app.listen(port, () => {
-  console.log(`BiteBud sensor server listening on http://localhost:${port}`);
 });
 
 function broadcast(payload) {
@@ -105,7 +109,7 @@ function broadcast(payload) {
 
 function startMockData() {
   if (mockTimer) return;
-  mockTimer = setInterval(() => {
+  mockTimer = setInterval(async () => {
     mockPhase += 1;
     const now = Date.now();
     const wave = Math.sin(mockPhase / 6);
@@ -119,6 +123,7 @@ function startMockData() {
       raw,
       timestamp: now
     }, now);
+    await appendReading(reading);
     broadcast({ type: "reading", reading, summary: summarizeSession(state, now) });
   }, 100);
 }
@@ -128,3 +133,38 @@ function stopMockData() {
   clearInterval(mockTimer);
   mockTimer = null;
 }
+
+async function main() {
+  await ensureDataDir();
+
+  const savedCalibration = await loadCalibration();
+  if (savedCalibration) {
+    const defaults = createSensorState().calibration;
+    state.calibration = {
+      ...defaults,
+      ...savedCalibration,
+      forcePoints:
+        Array.isArray(savedCalibration.forcePoints) && savedCalibration.forcePoints.length >= 2
+          ? savedCalibration.forcePoints
+          : defaults.forcePoints
+    };
+    console.log("[storage] restored saved calibration");
+  }
+
+  const savedReadings = await loadReadings({ limit: 3000 });
+  for (const reading of savedReadings) {
+    ingestReading(state, reading, reading.timestamp);
+  }
+  if (savedReadings.length) {
+    console.log(`[storage] restored ${savedReadings.length} readings from disk`);
+  }
+
+  app.listen(port, () => {
+    console.log(`BiteBud sensor server listening on http://localhost:${port}`);
+  });
+}
+
+main().catch((error) => {
+  console.error("BiteBud sensor server failed to start:", error);
+  process.exit(1);
+});

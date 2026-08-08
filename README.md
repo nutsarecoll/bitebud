@@ -38,8 +38,12 @@ Update the Wi-Fi name, Wi-Fi password, and laptop server URL before uploading.
 
 - `POST /api/readings`: receive ESP32 sensor readings.
 - `GET /api/readings/stream`: stream live dashboard updates.
+- `GET /api/readings/history?limit=3600`: read persisted readings from disk.
 - `POST /api/calibration`: update baseline, thresholds, and force mapping.
 - `GET /api/session-summary`: read event count, duration, intensity, and zone state.
+
+Readings and calibration are persisted to `data/` (override with `BITEBUD_DATA_DIR`)
+so history survives server restarts. `/api/session/reset` clears persisted history too.
 
 ## Safety
 

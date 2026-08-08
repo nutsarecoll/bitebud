@@ -8,7 +8,10 @@ const DEFAULT_CALIBRATION = {
     { raw: 4095, forceLb: 25 }
   ],
   activeThreshold: 18,
-  releaseThreshold: 12
+  releaseThreshold: 12,
+  activeMs: 100,
+  releaseMs: 150,
+  gapResetMs: 2000
 };
 
 export function createSensorState(now = Date.now()) {
@@ -27,7 +30,8 @@ export function createSensorState(now = Date.now()) {
             pressed: false,
             pendingStartAt: null,
             belowSince: null,
-            currentEvent: null
+            currentEvent: null,
+            lastAt: null
           }
         }
       ])
@@ -46,6 +50,9 @@ export function updateCalibration(state, patch) {
   if (Number.isFinite(patch.releaseThreshold)) {
     next.releaseThreshold = clamp(patch.releaseThreshold, 0, next.activeThreshold - 1);
   }
+  if (Number.isFinite(patch.activeMs)) next.activeMs = clamp(patch.activeMs, 0, 2000);
+  if (Number.isFinite(patch.releaseMs)) next.releaseMs = clamp(patch.releaseMs, 0, 2000);
+  if (Number.isFinite(patch.gapResetMs)) next.gapResetMs = clamp(patch.gapResetMs, 0, 60000);
 
   if (Array.isArray(patch.forcePoints)) {
     const points = patch.forcePoints
@@ -80,6 +87,12 @@ export function ingestReading(state, input, now = Date.now()) {
   const sensor = state.sensors[sensorId];
   sensor.status = "active";
   state.lastDeviceSeenAt = now;
+
+  const eventState = sensor.eventState;
+  if (eventState.lastAt !== null && timestamp - eventState.lastAt > state.calibration.gapResetMs) {
+    forceCloseEvent(sensor, timestamp);
+  }
+  eventState.lastAt = timestamp;
 
   const eventId = updateEventState(sensor, normalized, timestamp, state.calibration, state.events);
 
@@ -123,6 +136,36 @@ export function summarizeSession(state, now = Date.now()) {
   };
 }
 
+export function resetSessionState(state) {
+  state.readings.length = 0;
+  state.events.length = 0;
+  for (const sensor of Object.values(state.sensors)) {
+    sensor.latest = null;
+    sensor.eventState = {
+      pressed: false,
+      pendingStartAt: null,
+      belowSince: null,
+      currentEvent: null,
+      lastAt: null
+    };
+  }
+  state.lastDeviceSeenAt = null;
+  return state;
+}
+
+function forceCloseEvent(sensor, timestamp) {
+  const eventState = sensor.eventState;
+  const currentEvent = eventState.currentEvent;
+  if (currentEvent && !Number.isFinite(currentEvent.endedAt)) {
+    currentEvent.endedAt = timestamp;
+    currentEvent.durationMs = timestamp - currentEvent.startedAt;
+  }
+  eventState.pressed = false;
+  eventState.currentEvent = null;
+  eventState.pendingStartAt = null;
+  eventState.belowSince = null;
+}
+
 function updateEventState(sensor, normalized, timestamp, calibration, events) {
   const eventState = sensor.eventState;
   const active = normalized >= calibration.activeThreshold;
@@ -131,7 +174,7 @@ function updateEventState(sensor, normalized, timestamp, calibration, events) {
   if (!eventState.pressed) {
     if (active) {
       eventState.pendingStartAt ??= timestamp;
-      if (timestamp - eventState.pendingStartAt >= 100) {
+      if (timestamp - eventState.pendingStartAt >= calibration.activeMs) {
         const event = {
           id: `evt_${String(events.length + 1).padStart(4, "0")}`,
           sensorId: sensor.sensorId,
@@ -165,7 +208,7 @@ function updateEventState(sensor, normalized, timestamp, calibration, events) {
 
   if (released) {
     eventState.belowSince ??= timestamp;
-    if (timestamp - eventState.belowSince >= 150) {
+    if (timestamp - eventState.belowSince >= calibration.releaseMs) {
       if (currentEvent) {
         currentEvent.endedAt = timestamp;
         currentEvent.durationMs = timestamp - currentEvent.startedAt;

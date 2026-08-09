@@ -3,6 +3,7 @@
 This folder holds shared, non-code context so the project stays easy to continue from either computer.
 
 - `HARDWARE.md` records the first bench-prototype hardware plan and wiring.
+- `FUTURE_PROTOTYPE.md` records the next prototype phases, upgrade decisions, and future parts.
 - `WORKFLOW.md` records the GitHub workflow used to keep both computers synchronized.
 - `../PROJECT_CONTEXT.md` contains the broader product, safety, and pitch context.
 

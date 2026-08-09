@@ -38,3 +38,12 @@ git pull
 ```
 
 Avoid editing the same file independently on both computers before either computer pushes its work. If a change has already been pushed from elsewhere, pull first.
+
+## Push policy for BiteBud
+
+When asked to push BiteBud changes, include all relevant completed work in the same commit or set of commits:
+
+- Put code, tests, and configuration in their appropriate existing project folders.
+- Put non-code context—such as hardware decisions, future plans, workflows, and project decisions—in `project-notes/`.
+- Review the changes, run the relevant tests, commit, and push to `main`.
+- Do not add unrelated files, duplicate project copies, secrets, installed dependencies, or build output.

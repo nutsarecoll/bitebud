@@ -6,7 +6,7 @@ This plan carries forward the hardware discussion around the A201-25 voltage-div
 
 Goal: prove that BiteBud can detect press events, duration, and relative intensity.
 
-Parts already ordered:
+Parts already ordered (all except the Arduino had arrived by 2026-08-13):
 
 - Tekscan FlexiForce A201-25 force sensor.
 - Arduino Nano ESP32 with headers.
@@ -17,7 +17,8 @@ Parts already ordered:
 
 Steps after delivery:
 
-1. Assemble the 3.3 V voltage-divider circuit described in `HARDWARE.md`.
+1. Finish the prepared 3.3 V voltage-divider circuit by connecting the Nano as
+   described in `HARDWARE.md`.
 2. Connect the Nano to a computer with the USB-C data cable.
 3. Update the firmware with the local Wi-Fi name, password, and the computer's local server address.
 4. Run the BiteBud dashboard locally, upload the firmware, and confirm live readings appear.

@@ -80,3 +80,12 @@ that should remain available on every computer using the repository.
 Run a clean repeatability session with the metal puck fixed in place: five holds
 each at 100 g, 250 g, 500 g, and 1,000 g. Verify event count, duration, and force
 estimates before designing the permanent press pad or enclosure.
+
+## 2026-08-16: Roadmap text export
+
+- Reviewed all eight pages of `output/pdf/bitebud_project_roadmap.pdf`.
+- Added `project-notes/COMPETITION_ROADMAP.md` as a searchable Markdown
+  transcription preserving the roadmap's sections, tables, dates, risks,
+  decision gates, and source notes.
+- Kept the PDF as the designed artifact and labeled the Markdown version as a
+  dated planning snapshot so newer hardware status remains in this build log.

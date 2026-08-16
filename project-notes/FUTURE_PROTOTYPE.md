@@ -6,7 +6,7 @@ This plan carries forward the hardware discussion around the A201-25 voltage-div
 
 Goal: prove that BiteBud can detect press events, duration, and relative intensity.
 
-Parts already ordered (all except the Arduino had arrived by 2026-08-13):
+All ordered parts had arrived by 2026-08-16:
 
 - Tekscan FlexiForce A201-25 force sensor.
 - Arduino Nano ESP32 with headers.
@@ -15,18 +15,28 @@ Parts already ordered (all except the Arduino had arrived by 2026-08-13):
 - 47 kOhm resistors.
 - USB-C to USB-C data cable.
 
-Steps after delivery:
+Completed by 2026-08-16:
 
-1. Finish the prepared 3.3 V voltage-divider circuit by connecting the Nano as
-   described in `HARDWARE.md`.
-2. Connect the Nano to a computer with the USB-C data cable.
-3. Update the firmware with the local Wi-Fi name, password, and the computer's local server address.
-4. Run the BiteBud dashboard locally, upload the firmware, and confirm live readings appear.
-5. Apply light, medium, and strong bench presses to find a reliable press threshold.
-6. Calibrate with several known weights or a kitchen scale, then save the baseline and thresholds in the dashboard.
-7. Test event count, event duration, reset behavior, and saved readings.
+1. Finished the 3.3 V voltage-divider circuit described in `HARDWARE.md`.
+2. Connected and programmed the Nano with the USB-C data cable.
+3. Separated local Wi-Fi credentials from tracked firmware files.
+4. Confirmed live Nano readings reach the local dashboard.
+5. Conditioned the sensor and calibrated it with known scale loads and a metal
+   puck; the saved curve covers 0 to 1,000 g.
+6. Validated the 500 g calibration point within approximately 2%.
 
-Expected result: reliable *relative* pressure data. The simple circuit is intentionally for "pressed/not pressed" and light-to-strong comparisons; it is not intended to report medical-grade force.
+Remaining Phase 1 verification:
+
+1. Run five repeatability trials at each calibrated reference load.
+2. Verify event count, duration, release behavior, and saved readings in a clean
+   session.
+3. Build a stable press pad that fixes the puck location and loads the sensor
+   perpendicularly.
+
+Current result: reliable live relative-pressure data with a bench calibration
+specific to the present sensor and metal-puck geometry. The simple circuit is
+intentionally for press detection and light-to-strong comparisons; it is not
+medical-grade force instrumentation.
 
 ## Phase 2: Improve measurement quality
 

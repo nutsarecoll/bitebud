@@ -39,6 +39,37 @@ git pull
 
 Avoid editing the same file independently on both computers before either computer pushes its work. If a change has already been pushed from elsewhere, pull first.
 
+## Arduino setup on another Mac
+
+Install the command-line tools and Nano ESP32 platform:
+
+```bash
+brew install arduino-cli
+arduino-cli core update-index
+arduino-cli core install arduino:esp32
+```
+
+Create the local firmware configuration and edit it with that computer's Wi-Fi
+credentials and current local IP address:
+
+```bash
+cp firmware/bitebud_esp32_sensor/secrets.example.h \
+  firmware/bitebud_esp32_sensor/secrets.h
+```
+
+`secrets.h` is intentionally ignored by Git, so it must be configured separately
+on each computer and must never be committed. Find the current Wi-Fi address on
+macOS with `ipconfig getifaddr en0`. If the network changes, update
+`BITEBUD_SERVER_URL`, double-press the Nano reset button if necessary to enter
+upload mode, and upload the firmware again.
+
+Start the local dashboard with:
+
+```bash
+npm install
+npm run dev
+```
+
 ## Push policy for BiteBud
 
 When asked to push BiteBud changes, include all relevant completed work in the same commit or set of commits:

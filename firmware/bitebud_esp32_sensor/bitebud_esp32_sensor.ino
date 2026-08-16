@@ -2,12 +2,10 @@
   BiteBud pressure sensor prototype firmware
 
   Board: Arduino Nano ESP32 or compatible ESP32 board
-  Sensor: Tekscan FlexiForce A201 through a Quickstart Board or signal-conditioning circuit
+  Sensor: Tekscan FlexiForce A201 through the BiteBud voltage-divider circuit
 
-  Update these before uploading:
-  - WIFI_SSID
-  - WIFI_PASSWORD
-  - SERVER_URL: your laptop IP running the BiteBud server, e.g. http://192.168.1.20:8787/api/readings
+  Copy secrets.example.h to secrets.h and update the local values before
+  uploading. secrets.h is ignored by Git and must not be committed.
 
   This firmware reads one analog sensor at 20 Hz and sends smoothed data to the
   local BiteBud dashboard at 10 Hz. It is for bench testing only.
@@ -15,10 +13,11 @@
 
 #include <WiFi.h>
 #include <HTTPClient.h>
+#include "secrets.h"
 
-const char* WIFI_SSID = "YOUR_WIFI_NAME";
-const char* WIFI_PASSWORD = "YOUR_WIFI_PASSWORD";
-const char* SERVER_URL = "http://YOUR_LAPTOP_IP:8787/api/readings";
+const char* WIFI_SSID = BITEBUD_WIFI_SSID;
+const char* WIFI_PASSWORD = BITEBUD_WIFI_PASSWORD;
+const char* SERVER_URL = BITEBUD_SERVER_URL;
 
 const char* DEVICE_ID = "bitebud-proto-01";
 const char* SENSOR_ID = "front";

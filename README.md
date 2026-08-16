@@ -32,7 +32,24 @@ The firmware lives at:
 firmware/bitebud_esp32_sensor/bitebud_esp32_sensor.ino
 ```
 
-Update the Wi-Fi name, Wi-Fi password, and laptop server URL before uploading.
+Create the local firmware configuration before uploading:
+
+```bash
+cp firmware/bitebud_esp32_sensor/secrets.example.h \
+  firmware/bitebud_esp32_sensor/secrets.h
+```
+
+Edit `secrets.h` with the Wi-Fi name, Wi-Fi password, and laptop server URL.
+The file is ignored by Git so credentials are not pushed to GitHub.
+
+For a serial-only wiring check that does not require Wi-Fi, upload:
+
+```text
+firmware/bitebud_sensor_test/bitebud_sensor_test.ino
+```
+
+The completed wiring, calibration curve, and chronological prototype log are in
+`project-notes/`.
 
 ## API
 

@@ -1,7 +1,8 @@
 # Hardware Plan: First Bench Prototype
 
-Status: all parts except the Arduino Nano ESP32 have arrived. The unpowered
-breadboard wiring was prepared on 2026-08-13.
+Status: assembled and streaming live readings on 2026-08-16. The Arduino Nano
+ESP32 is connected to the A201 voltage divider, joined the local Wi-Fi network,
+and successfully posts readings to the BiteBud dashboard.
 
 ## Ordered parts
 
@@ -62,6 +63,42 @@ not be connected to a power source.
    3.3 V connection is shorted to ground.
 5. Connect the Nano to the computer using the USB-C data cable, then upload and
    test the firmware.
+
+The assembled breadboard used these Nano connections:
+
+```text
+row 1 sensor supply -> Nano 3V3 through j25
+row 3 sensor signal -> Nano A0 through j23
+row 5 divider ground -> Nano GND through j13
+```
+
+## Bench calibration: 2026-08-16
+
+The sensor was conditioned before calibration and loaded through a small,
+smooth metal puck centered on the sensing circle. A cardboard puck was tested
+first but rejected because compression and shifting produced inconsistent
+readings.
+
+Saved calibration curve:
+
+```text
+0 g       -> raw 0       -> 0.000 lb
+100 g     -> raw 24      -> 0.220 lb
+250 g     -> raw 87      -> 0.551 lb
+500 g     -> raw 110     -> 1.102 lb
+735 g     -> raw 244     -> 1.620 lb
+1000 g    -> raw 290     -> 2.205 lb
+```
+
+Dashboard settings: baseline `0`, maximum raw `320`, active threshold `5%`,
+and release threshold `2%`. A separate 500 g validation hold produced a stable
+median of raw `109` and an estimated `1.08 lb`, approximately 2% below the
+1.10 lb reference.
+
+This calibration is valid only while the same puck and loading geometry remain
+fixed. Moving the puck, loading at an angle, changing the divider resistor, or
+replacing the sensor requires recalibration. The low-cost divider and manual
+test fixture remain prototype tools, not laboratory or medical instrumentation.
 
 ## Mechanical testing and safety
 

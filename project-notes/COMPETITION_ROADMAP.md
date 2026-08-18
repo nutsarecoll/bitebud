@@ -51,14 +51,16 @@ eligibility and registration before treating the slate as committed.
 BiteBud is a smart infant-teething and wellness-tracking concept. The defensible
 core is a soft teether concept with pressure sensing plus a parent-facing
 dashboard that summarizes chewing frequency, relative intensity, duration, and
-changes over time. It supports awareness; it does not diagnose illness or
-determine why a baby is crying.
+changes from the baby's individual baseline. An interpretation agent turns
+meaningful changes into short explanations and safe next-step suggestions. It
+supports awareness; it does not diagnose illness, measure pain, confirm
+teething, or determine why a baby is crying.
 
 | Component | Description |
 |---|---|
 | Physical concept | Soft, chew-safe product direction with embedded pressure sensing. The current hardware is strictly a tabletop rig. |
-| Data layer | Press/chew event detection, event duration, relative intensity, usage history, calibration, and future pressure zones. |
-| Caregiver experience | A reassuring dashboard with trends, daily summaries, and notable-change prompts in plain language. |
+| Data layer | Press/chew event detection, timing, duration, relative intensity, baseline comparison, usage history, and calibration. Future pressure zones remain experimental until parent value is demonstrated. |
+| Caregiver experience | A reassuring agent that explains what changed, what it might mean, the limits of that interpretation, and a simple next step. Raw readings remain secondary. |
 
 ### Evidence-based current status
 
@@ -68,7 +70,7 @@ determine why a baby is crying.
 | Software | React dashboard, local API, live stream, persistent readings, calibration, session summaries, reset, and sensor engine tests. | Run against physical hardware; capture stable recordings and screenshots. |
 | Firmware | Arduino Nano ESP32 firmware path and Wi-Fi/server setup documented. | Upload to the arriving board and confirm end-to-end readings. |
 | Hardware | A201-25 sensor, breadboard, jumper wires, resistor, cable, and wiring layout prepared; Arduino was pending as of 13 Aug. | Complete 3.3 V divider, verify wiring, then characterize noise and repeatability. |
-| Validation | Survey themes and parent/professional questions exist; one internal claim says 100% found alerts useful. | Recover sample size/method or do not use the percentage publicly. Run structured interviews. |
+| Validation | Survey themes and parent/professional questions exist; one internal claim says 100% found alerts useful. The underlying need for reassurance is plausible, but demand for a sensor-equipped teether is unproven. | Recover sample size/method or do not use the percentage publicly. Show realistic insights in structured interviews and test whether parents would use, clean, trust, and pay for the product. |
 
 ### Definition of success for this cycle
 

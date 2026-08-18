@@ -28,15 +28,25 @@ Parents, especially new parents, often struggle to understand why a baby is cryi
 
 BiteBud's opportunity is to reduce parental guessing by organizing teething and comfort signals into simple, non-medical trend information.
 
+BiteBud cannot determine why a baby is crying or measure pain from chewing data.
+Its useful role is narrower: notice meaningful changes in chewing behavior,
+explain them cautiously, and give parents simple, safe next steps without
+creating unnecessary alarm.
+
 ## Product Behavior
 
 The teether should be described as tracking:
 
 - Chewing frequency.
-- Bite pressure or chewing intensity.
-- Duration of use.
+- Timing and duration of chewing events or sessions.
+- Changes from the baby's individual chewing baseline.
+- Relative bite pressure or chewing intensity as a supporting signal.
 - Usage patterns over time.
-- Changes in teething-related behavior.
+
+Future bite-location zones are an engineering experiment, not a proven
+parent-facing benefit. Raw force, voltage, and sensor readings are useful for
+calibration and product development but should not be the focus of the parent
+experience.
 
 The website/app should show:
 
@@ -46,7 +56,49 @@ The website/app should show:
 - Parent-friendly alerts when notable changes happen.
 - Simple explanations, not complicated medical charts.
 
-Good example framing: "If chewing and crying both increase compared with the baby's normal pattern, the app may suggest the baby could be experiencing more teething-related discomfort."
+Good example framing: "Chewing activity has been higher than your baby's usual
+pattern this afternoon. Increased chewing can happen during teething, although
+chewing alone cannot identify the cause. Consider offering a chilled teether
+and checking for other signs of discomfort."
+
+## Parent Insight Agent
+
+The interpretation agent is the main bridge between sensor data and parent
+value. It should answer three questions in plain language:
+
+1. What changed compared with this baby's usual pattern?
+2. What might that change mean, including the limits of the interpretation?
+3. What simple, safe action could the parent consider next?
+
+The agent should evaluate patterns across time rather than react to isolated
+pressure readings. Its inputs may combine chewing frequency, relative
+intensity, duration, time of day, recent trends, and optional caregiver context
+such as feeding, sleep, mood, or visible tooth eruption.
+
+Outputs should be calm, brief, confidence-aware, and occasional. They should
+not claim that BiteBud measures pain, identifies the cause of crying, confirms
+teething, or rules out illness. Significant symptoms should direct the parent
+to appropriate professional guidance rather than be attributed to teething.
+
+Preferred product promise: "BiteBud helps parents notice changes in their
+baby's chewing routine and gives simple, trustworthy guidance for managing
+teething moments."
+
+Avoid promises such as "BiteBud understands why your baby is uncomfortable" or
+"BiteBud detects teething pain in real time."
+
+## Desirability Status
+
+The parent problem is plausible and important, but demand for a sensor-equipped
+teether as the solution is not yet proven. Parents may value reassurance,
+evidence-based guidance, and help remembering patterns, while additional data,
+ambiguous alerts, cleaning, charging, and setup may add anxiety or effort.
+
+Validation should therefore test behavior rather than feature enthusiasm. Show
+parents realistic insight examples and ask whether they would use, clean,
+trust, and pay for the product; what decision each insight would change; and
+whether the experience feels more reassuring than burdensome. Do not treat a
+positive response to "Would this be helpful?" as proof of demand.
 
 ## AI Framing
 
@@ -69,7 +121,8 @@ Avoid:
 - Making microphone-based crying classification the centerpiece.
 - Overclaiming fever, illness, or medical-grade alerts.
 
-Safer phrasing: "BiteBud helps parents notice changes in fussiness, restlessness, chewing, and temperature trends over time."
+Safer phrasing: "BiteBud helps parents notice changes in their baby's chewing
+routine and offers simple, non-diagnostic guidance."
 
 ## Future Cap Concept
 
@@ -116,15 +169,21 @@ Main pitch structure:
 
 1. Problem: teething is a stressful guessing game.
 2. Current gap: existing products either soothe or monitor, but do not connect teething behavior with parent-friendly insights.
-3. Solution: a smart teether connected to a website/app.
-4. How it works: track chewing activity and comfort-related patterns.
+3. Solution: a smart teether connected to a parent-friendly interpretation agent.
+4. How it works: compare chewing activity with the baby's individual baseline and translate meaningful changes into cautious guidance.
 5. Safety: baby-safe materials, simple non-diagnostic alerts.
 6. Future step: wearable cap for temperature, movement, and crying-event trends.
 7. Impact: reduce parent stress and help caregivers respond with more confidence.
 
 Good 30-second version:
 
-"BiteBud is a smart baby teether designed to help parents understand teething-related discomfort in real time. Babies cannot explain why they are crying, and parents often have to guess whether the problem is teething, irritation, temperature, or general restlessness. BiteBud combines a soft baby-safe teether with built-in sensors that track chewing behavior and usage patterns. That information connects to a parent-friendly website or app where caregivers can see trends, daily summaries, and alerts when something changes from the baby's normal routine. BiteBud does not diagnose medical conditions; it helps parents recognize patterns sooner and respond with more confidence."
+"BiteBud is a smart baby teether designed to make teething moments less
+confusing. Built-in sensors track chewing frequency, timing, duration, and
+relative intensity. A parent-friendly agent compares those signals with the
+baby's usual pattern and turns meaningful changes into short explanations and
+safe next-step suggestions. BiteBud cannot diagnose a condition, measure pain,
+or determine why a baby is crying; it helps parents recognize chewing patterns
+and respond with more confidence."
 
 ## Survey Context
 
@@ -137,7 +196,11 @@ Useful parent-facing questions:
 
 - How often do you have difficulty figuring out why your baby is crying?
 - What baby discomfort signs are hardest for you to track or understand?
-- Would you find it helpful if a teether tracked chewing patterns and alerted you to changes?
+- After seeing a realistic BiteBud insight, what would you do differently?
+- Would this insight reassure you, add worry, or make no difference? Why?
+- How often would you realistically use, clean, and charge this teether?
+- What would have to be true for you to trust its guidance?
+- Would you choose or pay more for BiteBud over a conventional teether? Why?
 - How comfortable would you be using a baby-safe smart teether or optional wearable?
 - What would make you trust a smart baby product more?
 

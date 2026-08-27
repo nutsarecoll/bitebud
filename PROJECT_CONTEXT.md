@@ -14,7 +14,7 @@ BiteBud is a smart infant teething and wellness-tracking concept. The current, m
 
 - A sensor-enabled smart teether.
 - A parent-facing website or app.
-- Pattern summaries and alerts for teething-related behavior.
+- Occasional, calm summaries of meaningful changes in chewing behavior.
 
 The wearable cap should be framed as a future expansion or optional future step, not as the main product unless explicitly requested.
 
@@ -53,7 +53,7 @@ The website/app should show:
 - Teether activity.
 - Trend summaries.
 - Daily summaries.
-- Parent-friendly alerts when notable changes happen.
+- Occasional parent-friendly notifications only when a change is meaningful.
 - Simple explanations, not complicated medical charts.
 
 Good example framing: "Chewing activity has been higher than your baby's usual
@@ -80,9 +80,34 @@ not claim that BiteBud measures pain, identifies the cause of crying, confirms
 teething, or rules out illness. Significant symptoms should direct the parent
 to appropriate professional guidance rather than be attributed to teething.
 
-Preferred product promise: "BiteBud helps parents notice changes in their
-baby's chewing routine and gives simple, trustworthy guidance for managing
-teething moments."
+### Summary-first product direction
+
+BiteBud should be designed as a calm teething companion, not a real-time
+discomfort detector. The intended experience is:
+
+- Collect chewing activity quietly while the teether is being used.
+- Compare each day or session with the baby's individual baseline.
+- Summarize meaningful changes instead of streaming raw measurements.
+- Explain uncertainty and the limits of every interpretation.
+- Offer simple, evidence-based comfort suggestions when appropriate.
+- Let parents optionally add context such as mood, feeding, sleep, or visible
+  tooth eruption.
+
+Example summary:
+
+"Maya used her teether more frequently this afternoon than she usually does.
+Her chewing sessions were also slightly longer. Increased chewing can happen
+during teething, but BiteBud cannot determine whether she is in pain. If she
+seems uncomfortable, consider offering a chilled teether or gently massaging
+her gums."
+
+Preferred product promise: "BiteBud quietly tracks your baby's chewing routine
+and provides calm, easy-to-understand summaries for navigating teething
+moments."
+
+Core notification principle: do not interrupt the parent unless the information
+is meaningful, understandable, and provides a reasonable next step. Routine
+activity belongs in an on-demand or daily summary rather than an alert.
 
 Avoid promises such as "BiteBud understands why your baby is uncomfortable" or
 "BiteBud detects teething pain in real time."
@@ -222,8 +247,8 @@ The website/app should feel like a functional parent dashboard, not just a marke
 - Problem and solution.
 - Teether activity dashboard.
 - Trend summaries.
-- Alerts or notifications.
-- Daily summaries.
+- Calm daily or session summaries.
+- Rare, meaningful notifications rather than constant monitoring alerts.
 - Safety/non-diagnostic disclaimer.
 - Competitor comparison.
 - Future cap expansion.

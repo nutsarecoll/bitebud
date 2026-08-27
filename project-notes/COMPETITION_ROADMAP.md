@@ -52,15 +52,16 @@ BiteBud is a smart infant-teething and wellness-tracking concept. The defensible
 core is a soft teether concept with pressure sensing plus a parent-facing
 dashboard that summarizes chewing frequency, relative intensity, duration, and
 changes from the baby's individual baseline. An interpretation agent turns
-meaningful changes into short explanations and safe next-step suggestions. It
-supports awareness; it does not diagnose illness, measure pain, confirm
-teething, or determine why a baby is crying.
+meaningful changes into occasional, calm explanations and safe next-step
+suggestions. The experience is summary-first rather than a constant stream of
+readings or alerts. It supports awareness; it does not diagnose illness,
+measure pain, confirm teething, or determine why a baby is crying.
 
 | Component | Description |
 |---|---|
 | Physical concept | Soft, chew-safe product direction with embedded pressure sensing. The current hardware is strictly a tabletop rig. |
 | Data layer | Press/chew event detection, timing, duration, relative intensity, baseline comparison, usage history, and calibration. Future pressure zones remain experimental until parent value is demonstrated. |
-| Caregiver experience | A reassuring agent that explains what changed, what it might mean, the limits of that interpretation, and a simple next step. Raw readings remain secondary. |
+| Caregiver experience | A calm teething companion that quietly collects activity, compares sessions with the baby's baseline, and explains what changed, what it might mean, its limitations, and a simple next step. Raw readings remain secondary, and notifications are reserved for meaningful, actionable information. |
 
 ### Evidence-based current status
 
@@ -77,6 +78,11 @@ teething, or determine why a baby is crying.
 A safe bench demo that detects and summarizes repeatable pressure patterns; a
 credible product model or rendering; 5-10 documented discovery interviews; and
 one reusable evidence package that can be adapted for all three competitions.
+
+The parent-facing demo should emphasize an on-demand or daily summary, not
+continuous monitoring. It should show that BiteBud can remain quiet during
+routine activity, explain uncertainty, and offer a reasonable next step when a
+change is worth mentioning.
 
 ## 2. Competitions
 

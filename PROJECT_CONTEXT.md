@@ -10,6 +10,13 @@ Notes:
 
 ## Core Product
 
+Current direction confirmed September 11, 2026: keep the original infant-teether
+concept, chewing-pattern tracking, and parent insight agent. Adult bruxism was
+explored as an alternative and is not the active product direction. See
+[`project-notes/PRODUCT_DIRECTION.md`](project-notes/PRODUCT_DIRECTION.md) for
+the decision and the supporting competitor research, including the distinction
+between the related smart-teether patent and BiteBud's intended function.
+
 BiteBud is a smart infant teething and wellness-tracking concept. The current, most defensible version should focus on:
 
 - A sensor-enabled smart teether.

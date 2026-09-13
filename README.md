@@ -1,6 +1,6 @@
 # BiteBud Live Sensor Dashboard
 
-Local prototype dashboard for the BiteBud pressure sensor system. It supports live pressure trends, press/chew event detection, approximate force calibration, and future pressure zones.
+Local prototype dashboard for the BiteBud pressure sensor system. It supports live pressure trends, press/chew event detection, approximate force readings in grams and pounds, calibration, and future pressure zones.
 
 ## Run The Dashboard
 
@@ -15,7 +15,16 @@ Open the local Vite URL printed in the terminal, usually:
 http://localhost:5173
 ```
 
-Use **Start Mock Sensor** to see live data before hardware arrives.
+The home page contains the website from `innovationprizejackdhruv`, including its
+How It Works, App Preview, Safety, FAQ, and Contact pages. Click **View BiteBud
+project** to open the live sensor dashboard at `/bitebud`. The dashboard's
+**Back to landing page** link returns to the home page.
+
+The App Preview remains the original mock concept demo; `/bitebud` uses the local
+sensor API. Their styles load separately to preserve both designs.
+
+Under **Sensor setup & calibration**, use **Start Mock Sensor** to see live data
+before hardware arrives.
 
 ## Hardware Flow
 

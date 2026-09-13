@@ -11,7 +11,7 @@ BLOB_READ_WRITE_TOKEN in .env.cloud. Never commit that file.
 
 Run the local website/server with `npm run dev`. In another terminal run
 `npm run demo:cloud`. Open https://bitebud.vercel.app/bitebud.
-The bridge stops after two hours, or use Ctrl+C. The Mac must remain awake.
+The bridge stops after 30 minutes, or use Ctrl+C. The Mac must remain awake.
 Cloud updates arrive every few seconds; a disconnected bridge is marked stale
 within 15 seconds. The graph keeps the source timestamps and the mock label.
 

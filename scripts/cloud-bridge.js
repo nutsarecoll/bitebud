@@ -6,13 +6,13 @@ if (!process.env.BLOB_READ_WRITE_TOKEN) {
   process.exit(1);
 }
 const local = 'http://localhost:8787';
-const endsAt = Date.now() + 2 * 60 * 60 * 1000;
+const endsAt = Date.now() + 30 * 60 * 1000;
 let stopping = false;
 let uploaded = false;
 let failures = 0;
 process.on('SIGINT', () => { stopping = true; });
 process.on('SIGTERM', () => { stopping = true; });
-console.log('Sharing the tabletop prototype session with the BiteBud website. Stops after 2 hours or Ctrl+C.');
+console.log('Sharing the tabletop prototype session with the BiteBud website. Stops after 30 minutes or Ctrl+C.');
 while (!stopping && Date.now() < endsAt) {
   try {
     const [response, healthResponse] = await Promise.all([

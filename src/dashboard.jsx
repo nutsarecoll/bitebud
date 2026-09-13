@@ -4,6 +4,7 @@ import "./styles.css";
 
 const ZONES = ["front", "left", "right", "back"];
 const API = "";
+const CLOUD_DEMO = import.meta.env.PROD;
 
 function App() {
   const [notice, setNotice] = useState("");
@@ -23,6 +24,41 @@ function App() {
 
   useEffect(() => {
     const clock = setInterval(() => setNow(Date.now()), 1000);
+    if (CLOUD_DEMO) {
+      let cancelled = false;
+      let timer;
+      const controller = new AbortController();
+      async function refresh() {
+        try {
+          const response = await fetch('/api/live', {
+            cache: 'no-store', signal: AbortSignal.any([controller.signal, AbortSignal.timeout(10000)]),
+          });
+          const data = await response.json();
+          if (!response.ok) throw new Error(data.error || 'Live demo unavailable.');
+          if (cancelled) return;
+          setReadings(data.readings ?? []);
+          setSummary(data.summary ?? null);
+          setMockRunning(Boolean(data.mockRunning));
+          syncCalibration(data.summary?.calibration);
+          const fresh = Date.now() - data.publishedAt < 15000;
+          setStreamConnected(fresh);
+          setNotice(fresh ? '' : 'Demo connection paused. The demo Mac must be running and sharing readings.');
+        } catch (error) {
+          if (cancelled) return;
+          setStreamConnected(false);
+          setNotice(error.message || 'Unable to reach the live demo.');
+        } finally {
+          if (!cancelled) timer = setTimeout(refresh, 2000);
+        }
+      }
+      refresh();
+      return () => {
+        cancelled = true;
+        controller.abort();
+        clearTimeout(timer);
+        clearInterval(clock);
+      };
+    }
     fetch(`${API}/api/health`)
       .then((r) => r.json())
       .then((data) => setMockRunning(data.mockRunning))
@@ -67,7 +103,7 @@ function App() {
     [readings, now],
   );
   const deviceConnected =
-    streamConnected && Boolean(latest && now - latest.timestamp < 5000);
+    streamConnected && Boolean(latest && now - latest.timestamp < (CLOUD_DEMO ? 15000 : 5000));
   const isMock = latest?.deviceId?.startsWith("bitebud-mock") || mockRunning;
   const activeZone = strongestZone(summary?.latestBySensor);
 
@@ -298,7 +334,12 @@ function App() {
               </div>
             </section>
           </div>
-          <details id="setup" className="setup-details">
+          {CLOUD_DEMO ? (
+            <section id="setup" className="action-notice">
+              Live tabletop demo · updates every few seconds while the demo Mac is connected.
+              Calibration and session controls are available on the demo Mac.
+            </section>
+          ) : <details id="setup" className="setup-details">
             <summary>
               <div>
                 <p className="eyebrow">PROTOTYPE TOOLS</p>
@@ -334,7 +375,7 @@ function App() {
               </fieldset>
               <HardwarePanel />
             </div>
-          </details>
+          </details>}
           {notice && (
             <p className="action-notice" role="status">
               {notice}

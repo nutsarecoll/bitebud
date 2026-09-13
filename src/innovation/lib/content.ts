@@ -27,6 +27,7 @@ export type NavItem = {
 };
 
 export const navItems: NavItem[] = [
+  { label: "3D Prototype", href: "/#prototype" },
   { label: "How It Works", href: "/how-it-works" },
   { label: "App Preview", href: "/app-preview" },
   { label: "Safety", href: "/safety" },

@@ -1,11 +1,7 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-  content: [
-    "./src/innovation/app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/innovation/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/innovation/lib/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
+  content: ["./src/innovation/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
       colors: {
@@ -38,10 +34,16 @@ const config: Config = {
         gold: "hsl(var(--gold) / <alpha-value>)",
       },
       fontSize: {
-        eyebrow: ["0.72rem", { lineHeight: "1rem", letterSpacing: "0.12em", fontWeight: "700" }],
+        eyebrow: [
+          "0.72rem",
+          { lineHeight: "1rem", letterSpacing: "0.12em", fontWeight: "700" },
+        ],
         body: ["1rem", { lineHeight: "1.75rem" }],
         lead: ["1.125rem", { lineHeight: "2rem" }],
-        display: ["clamp(2.5rem, 5vw, 4.75rem)", { lineHeight: "1.02", letterSpacing: "0" }],
+        display: [
+          "clamp(2.5rem, 5vw, 4.75rem)",
+          { lineHeight: "1.02", letterSpacing: "0" },
+        ],
       },
       boxShadow: {
         soft: "0 24px 80px hsl(var(--foreground) / 0.12)",

@@ -74,3 +74,15 @@ so history survives server restarts. `/api/session/reset` clears persisted histo
 ## Safety
 
 This is a bench/demo prototype. Do not put electronics in anyone's mouth. The dashboard is for pressure-pattern awareness and prototype testing only, not medical diagnosis.
+
+## Interactive Prototype
+
+The landing page's **3D Prototype** link opens `/#prototype`. Visitors can rotate
+and zoom the CAD concept, select any of its nine named parts, and separate the
+assembly to inspect the pressure sensor and controller board. Buttons provide
+keyboard alternatives to dragging and zooming. The model and fallback preview
+are served from `public/models/`; the viewer does not depend on the sensor API.
+
+The gray mouthguard contains the pressure sensor; the controller is shown in the
+orange outside loop. Geometry and hardware envelopes are conceptual, not
+manufacturing-ready or validated for baby use.

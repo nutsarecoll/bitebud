@@ -19,14 +19,13 @@ export function CtaBand() {
             </p>
           </div>
           <div className="flex flex-col gap-3 sm:flex-row">
-            <ButtonLink className="bg-primary-foreground text-primary hover:bg-primary-foreground" href="/app-preview">
+            <ButtonLink variant="inverse" href="/app-preview">
               {commonCtas.appPreview}
               <ArrowRight aria-hidden="true" className="ml-2 size-4" />
             </ButtonLink>
             <ButtonLink
-              className="border-primary-foreground/24 bg-primary-foreground/10 text-primary-foreground hover:bg-primary-foreground/14"
               href="/contact"
-              variant="secondary"
+              variant="inverseSecondary"
             >
               {commonCtas.joinWaitlist}
             </ButtonLink>

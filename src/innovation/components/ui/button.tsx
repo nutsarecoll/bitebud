@@ -2,7 +2,7 @@ import Link from "@/components/site/link";
 import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
-type ButtonVariant = "primary" | "secondary" | "ghost";
+type ButtonVariant = "primary" | "secondary" | "ghost" | "inverse" | "inverseSecondary";
 
 const variants: Record<ButtonVariant, string> = {
   primary:
@@ -10,6 +10,9 @@ const variants: Record<ButtonVariant, string> = {
   secondary:
     "border border-border bg-surface-elevated/84 text-foreground shadow-line hover:-translate-y-0.5 hover:bg-surface-elevated",
   ghost: "text-foreground hover:bg-surface-soft/72",
+  inverse: "bg-primary-foreground text-primary shadow-soft hover:-translate-y-0.5 hover:shadow-lift",
+  inverseSecondary: "border border-primary-foreground/24 bg-primary-foreground/10 text-primary-foreground hover:bg-primary-foreground/14",
+
 };
 
 const baseClass =

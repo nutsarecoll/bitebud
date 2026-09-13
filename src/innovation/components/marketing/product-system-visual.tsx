@@ -7,7 +7,7 @@ export function ProductSystemVisual() {
     <Card className="relative overflow-hidden bg-surface p-5 sm:p-7">
       <div className="absolute inset-x-8 top-1/2 h-px bg-gradient-to-r from-transparent via-primary/28 to-transparent" />
       <div className="relative grid gap-5 sm:grid-cols-2">
-        <div className="rounded-2xl border border-border bg-surface-elevated/88 p-5 shadow-soft">
+        <div className="min-w-0 rounded-2xl border border-border bg-surface-elevated/88 p-5 shadow-soft">
           <div className="mb-5 flex items-center justify-between">
             <span className="text-sm font-semibold text-muted-foreground">
               {productVisualCopy.capTitle}
@@ -19,16 +19,16 @@ export function ProductSystemVisual() {
               <Baby aria-hidden="true" className="size-16 text-primary" />
             </div>
           </div>
-          <div className="mt-5 grid grid-cols-3 gap-2 text-center text-xs font-semibold text-muted-foreground">
+          <div className="mt-5 flex flex-wrap justify-center gap-2 text-center text-xs font-semibold text-muted-foreground">
             {productVisualCopy.capSignals.map((signal) => (
-              <span className="rounded-full bg-muted px-2 py-2" key={signal}>
+              <span className="max-w-full rounded-full bg-muted px-3 py-2 [overflow-wrap:anywhere]" key={signal}>
                 {signal}
               </span>
             ))}
           </div>
         </div>
 
-        <div className="rounded-2xl border border-border bg-surface-elevated/88 p-5 shadow-soft">
+        <div className="min-w-0 rounded-2xl border border-border bg-surface-elevated/88 p-5 shadow-soft">
           <div className="mb-5 flex items-center justify-between">
             <span className="text-sm font-semibold text-muted-foreground">
               {productVisualCopy.teetherTitle}
@@ -41,9 +41,9 @@ export function ProductSystemVisual() {
               <div className="absolute bottom-7 left-1/2 h-12 w-20 -translate-x-1/2 rounded-full border border-primary/14 bg-[#e4efed]" />
             </div>
           </div>
-          <div className="mt-5 grid grid-cols-3 gap-2 text-center text-xs font-semibold text-muted-foreground">
+          <div className="mt-5 flex flex-wrap justify-center gap-2 text-center text-xs font-semibold text-muted-foreground">
             {productVisualCopy.teetherSignals.map((signal) => (
-              <span className="rounded-full bg-muted px-2 py-2" key={signal}>
+              <span className="max-w-full rounded-full bg-muted px-3 py-2 [overflow-wrap:anywhere]" key={signal}>
                 {signal}
               </span>
             ))}

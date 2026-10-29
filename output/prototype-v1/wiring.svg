@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="1000" viewBox="0 0 1500 1000"><rect width="100%" height="100%" fill="#fffefa"/><style>text{font-family:Arial,sans-serif;fill:#24372e;font-size:18px}.title{font-size:34px;font-weight:700}.small{font-size:15px}.tiny{font-size:13px}.bold{font-weight:700}.wire{fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}</style><text x="60" y="65" class="title">BiteBud V1 · Electrical wiring</text>
+<text x="60" y="100">Arduino Nano ESP32 · USB powered · Four regions on ONE continuous sheet</text>
+<path class="wire" stroke="#c4513b" d="M90 195H1315"/><text x="60" y="185" class="bold">3V3</text>
+<text x="680" y="185" text-anchor="middle" class="small">Common opposing copper electrode → Nano 3V3</text>
+<rect x="130" y="220" width="1060" height="145" rx="15" fill="none" stroke="#a7aea1" stroke-dasharray="8 7"/>
+<text x="190" y="150" text-anchor="middle" class="bold">Z1 → A0</text>
+  <path class="wire" stroke="#c4513b" d="M190 195v45"/><circle cx="190" cy="195" r="5" fill="#c4513b"/>
+  <rect x="155" y="240" width="70" height="100" rx="8" fill="#e6e7de" stroke="#526750" stroke-width="2"/>
+  <path class="wire" stroke="#526750" d="M167 318l46 -55m-10 0h10v10"/>
+  <text x="234" y="273" class="small">Film</text><text x="234" y="297" class="small">region 1</text>
+  <path class="wire" stroke="#b34835" d="M190 340v65h70"/><circle cx="190" cy="405" r="5" fill="#b34835"/>
+  <rect x="260" y="394" width="55" height="22" fill="white" stroke="#b34835" stroke-width="2"/><text x="286" y="382" text-anchor="middle" class="small">1 kΩ</text>
+  <path class="wire" stroke="#b34835" d="M315 405h65"/><circle cx="345" cy="405" r="5" fill="#b34835"/>
+  <text x="373" y="440" text-anchor="middle" class="bold">A0</text>
+  <path class="wire" stroke="#46554b" d="M190 405v85"/><rect x="179" y="490" width="22" height="65" fill="white" stroke="#46554b" stroke-width="2"/>
+  <text x="173" y="585" text-anchor="middle" class="small">10 kΩ</text><path class="wire" stroke="#46554b" d="M190 555v75"/><path class="wire" stroke="#46554b" d="M190 630v12m-14 0h28m-10 6h-8m2 6h4"/>
+  <path class="wire" stroke="#46554b" d="M345 405v95m-16 0h32m-32 10h32m-16 0v120"/>
+  <text x="345" y="555" text-anchor="middle" class="small">100 nF</text><path class="wire" stroke="#46554b" d="M345 630v12m-14 0h28m-10 6h-8m2 6h4"/>
+  <text x="162" y="690" class="tiny">ADC lead: red label A0</text><text x="500" y="150" text-anchor="middle" class="bold">Z2 → A1</text>
+  <path class="wire" stroke="#c4513b" d="M500 195v45"/><circle cx="500" cy="195" r="5" fill="#c4513b"/>
+  <rect x="465" y="240" width="70" height="100" rx="8" fill="#e6e7de" stroke="#526750" stroke-width="2"/>
+  <path class="wire" stroke="#526750" d="M477 318l46 -55m-10 0h10v10"/>
+  <text x="544" y="273" class="small">Film</text><text x="544" y="297" class="small">region 2</text>
+  <path class="wire" stroke="#9c741b" d="M500 340v65h70"/><circle cx="500" cy="405" r="5" fill="#9c741b"/>
+  <rect x="570" y="394" width="55" height="22" fill="white" stroke="#9c741b" stroke-width="2"/><text x="596" y="382" text-anchor="middle" class="small">1 kΩ</text>
+  <path class="wire" stroke="#9c741b" d="M625 405h65"/><circle cx="655" cy="405" r="5" fill="#9c741b"/>
+  <text x="683" y="440" text-anchor="middle" class="bold">A1</text>
+  <path class="wire" stroke="#46554b" d="M500 405v85"/><rect x="489" y="490" width="22" height="65" fill="white" stroke="#46554b" stroke-width="2"/>
+  <text x="483" y="585" text-anchor="middle" class="small">10 kΩ</text><path class="wire" stroke="#46554b" d="M500 555v75"/><path class="wire" stroke="#46554b" d="M500 630v12m-14 0h28m-10 6h-8m2 6h4"/>
+  <path class="wire" stroke="#46554b" d="M655 405v95m-16 0h32m-32 10h32m-16 0v120"/>
+  <text x="655" y="555" text-anchor="middle" class="small">100 nF</text><path class="wire" stroke="#46554b" d="M655 630v12m-14 0h28m-10 6h-8m2 6h4"/>
+  <text x="472" y="690" class="tiny">ADC lead: yellow label A1</text><text x="810" y="150" text-anchor="middle" class="bold">Z3 → A2</text>
+  <path class="wire" stroke="#c4513b" d="M810 195v45"/><circle cx="810" cy="195" r="5" fill="#c4513b"/>
+  <rect x="775" y="240" width="70" height="100" rx="8" fill="#e6e7de" stroke="#526750" stroke-width="2"/>
+  <path class="wire" stroke="#526750" d="M787 318l46 -55m-10 0h10v10"/>
+  <text x="854" y="273" class="small">Film</text><text x="854" y="297" class="small">region 3</text>
+  <path class="wire" stroke="#35734b" d="M810 340v65h70"/><circle cx="810" cy="405" r="5" fill="#35734b"/>
+  <rect x="880" y="394" width="55" height="22" fill="white" stroke="#35734b" stroke-width="2"/><text x="906" y="382" text-anchor="middle" class="small">1 kΩ</text>
+  <path class="wire" stroke="#35734b" d="M935 405h65"/><circle cx="965" cy="405" r="5" fill="#35734b"/>
+  <text x="993" y="440" text-anchor="middle" class="bold">A2</text>
+  <path class="wire" stroke="#46554b" d="M810 405v85"/><rect x="799" y="490" width="22" height="65" fill="white" stroke="#46554b" stroke-width="2"/>
+  <text x="793" y="585" text-anchor="middle" class="small">10 kΩ</text><path class="wire" stroke="#46554b" d="M810 555v75"/><path class="wire" stroke="#46554b" d="M810 630v12m-14 0h28m-10 6h-8m2 6h4"/>
+  <path class="wire" stroke="#46554b" d="M965 405v95m-16 0h32m-32 10h32m-16 0v120"/>
+  <text x="965" y="555" text-anchor="middle" class="small">100 nF</text><path class="wire" stroke="#46554b" d="M965 630v12m-14 0h28m-10 6h-8m2 6h4"/>
+  <text x="782" y="690" class="tiny">ADC lead: green label A2</text><text x="1120" y="150" text-anchor="middle" class="bold">Z4 → A3</text>
+  <path class="wire" stroke="#c4513b" d="M1120 195v45"/><circle cx="1120" cy="195" r="5" fill="#c4513b"/>
+  <rect x="1085" y="240" width="70" height="100" rx="8" fill="#e6e7de" stroke="#526750" stroke-width="2"/>
+  <path class="wire" stroke="#526750" d="M1097 318l46 -55m-10 0h10v10"/>
+  <text x="1164" y="273" class="small">Film</text><text x="1164" y="297" class="small">region 4</text>
+  <path class="wire" stroke="#276d96" d="M1120 340v65h70"/><circle cx="1120" cy="405" r="5" fill="#276d96"/>
+  <rect x="1190" y="394" width="55" height="22" fill="white" stroke="#276d96" stroke-width="2"/><text x="1216" y="382" text-anchor="middle" class="small">1 kΩ</text>
+  <path class="wire" stroke="#276d96" d="M1245 405h65"/><circle cx="1275" cy="405" r="5" fill="#276d96"/>
+  <text x="1303" y="440" text-anchor="middle" class="bold">A3</text>
+  <path class="wire" stroke="#46554b" d="M1120 405v85"/><rect x="1109" y="490" width="22" height="65" fill="white" stroke="#46554b" stroke-width="2"/>
+  <text x="1103" y="585" text-anchor="middle" class="small">10 kΩ</text><path class="wire" stroke="#46554b" d="M1120 555v75"/><path class="wire" stroke="#46554b" d="M1120 630v12m-14 0h28m-10 6h-8m2 6h4"/>
+  <path class="wire" stroke="#46554b" d="M1275 405v95m-16 0h32m-32 10h32m-16 0v120"/>
+  <text x="1275" y="555" text-anchor="middle" class="small">100 nF</text><path class="wire" stroke="#46554b" d="M1275 630v12m-14 0h28m-10 6h-8m2 6h4"/>
+  <text x="1092" y="690" class="tiny">ADC lead: blue label A3</text>
+<rect x="60" y="740" width="1380" height="205" rx="15" fill="#eef1e8"/>
+<text x="85" y="775" class="bold">Exact connections (use Arduino labels, not bare GPIO numbers)</text>
+<text x="85" y="810">Z1 node → 1 kΩ → A0 · Z2 node → 1 kΩ → A1 · Z3 node → 1 kΩ → A2 · Z4 node → 1 kΩ → A3</text>
+<text x="85" y="845">Each node → its own 10 kΩ → GND. Each ADC pin → its own 100 nF → GND. All GND symbols join Nano GND.</text>
+<text x="85" y="880">Dashed box = four measured regions in one film, NOT four purchased sensors. Contacts are electrically coupled.</text>
+<text x="85" y="915">Starting resistor values require bench validation. USB only; never connect this circuit to 5V/VBUS/VIN.</text>
+<text x="60" y="980" class="small">Tabletop build reference · Not for infant use · Film properties and soft-cover pressure spreading require physical testing.</text></svg>

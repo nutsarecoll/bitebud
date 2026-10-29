@@ -9,6 +9,8 @@ This folder holds shared, non-code context so the project stays easy to continue
   roadmap PDF.
 - `FUTURE_PROTOTYPE.md` records the next prototype phases, upgrade decisions, and future parts.
 - `WORKFLOW.md` records the GitHub workflow used to keep both computers synchronized.
+- `LOW_COST_PRESSURE_MAPPING_RESEARCH.md` compares continuous-sheet sensing options and costs.
+- `../output/prototype-v1/BUILD_GUIDE.md` specifies the four-region experimental build, wiring, parts, firmware, and calibration.
 - `../PROJECT_CONTEXT.md` contains the broader product, safety, and pitch context.
 - `../output/pdf/bitebud_project_roadmap.pdf` is the generated eight-page project
   and competition roadmap.
